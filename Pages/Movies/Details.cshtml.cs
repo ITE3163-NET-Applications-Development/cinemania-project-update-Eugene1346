@@ -18,9 +18,9 @@ namespace CineMania.Pages.Movies
         {
             _context = context;
         }
-
         public Movie Movie { get; set; }
-
+        public IList<Movie> MovieCategory { get; set; }
+        //focus on this line too
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -29,8 +29,10 @@ namespace CineMania.Pages.Movies
             }
 
             Movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
-
-            if (Movie == null)
+           
+            MovieCategory = await _context.Movies.Where(m => m.Genre == Movie.Genre).
+                ToListAsync();
+            if (Movie == null && MovieCategory == null)
             {
                 return NotFound();
             }

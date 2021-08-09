@@ -19,6 +19,12 @@
         </div>
         <div class="col-md-3">
             <h5>Related Movies</h5>
+            @foreach (var m in @Model.MovieCategory)
+            {
+                
+                
+                <p>@m.Title</p>
+            }
         </div>
     </dl>
 </div>
