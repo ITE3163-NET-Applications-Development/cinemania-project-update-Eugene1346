@@ -24,6 +24,10 @@
                 
                 
                 <p>@m.Title</p>
+                <div class="col-3">
+                    <a class="text-decoration-none" asp-page="./details" asp-route-id="@m.Id"></a>
+                    <img height="300" width="200" src="/images/posters/@m.ImageName">
+                </div>
             }
         </div>
     </dl>

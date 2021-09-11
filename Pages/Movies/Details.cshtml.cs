@@ -30,7 +30,7 @@ namespace CineMania.Pages.Movies
 
             Movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
            
-            MovieCategory = await _context.Movies.Where(m => m.Genre == Movie.Genre).
+            MovieCategory = await _context.Movies.Where(m => m.Genre == Movie.Genre && m.Id !=id).
                 ToListAsync();
             if (Movie == null && MovieCategory == null)
             {
@@ -39,4 +39,5 @@ namespace CineMania.Pages.Movies
             return Page();
         }
     }
-}
+ }
+ 
